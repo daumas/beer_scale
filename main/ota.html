@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP32 OTA Update</title>
+</head>
+<body>
+    <h2>ESP32 OTA Update</h2>
+    <input type="file" id="fileInput">
+    <button onclick="uploadFirmware()">Upload & Update</button>
+    <p id="status"></p>
+
+    <script>
+        function uploadFirmware() {
+            let file = document.getElementById("fileInput").files[0];
+            if (!file) {
+                alert("Please select a .bin file first.");
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "/update", true);
+            xhr.upload.onprogress = (event) => {
+                document.getElementById("status").innerText = `Uploading: ${Math.round((event.loaded / event.total) * 100)}%`;
+            };
+            xhr.onload = () => {
+                document.getElementById("status").innerText = "Update Complete! Rebooting...";
+            };
+            xhr.send(file);
+        }
+    </script>
+</body>
+</html>
