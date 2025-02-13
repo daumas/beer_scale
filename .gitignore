@@ -1,0 +1,18 @@
+# Ignore build directories
+build/
+sdkconfig
+sdkconfig.old
+
+# Ignore temporary files
+*.bak
+*.tmp
+
+# Ignore large binary files
+*.bin
+*.elf
+
+# Ignore environment-specific files
+.vscode/
+
+# Ignore arduino libraries (~2GB in size)
+components/arduino
