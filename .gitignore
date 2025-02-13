@@ -13,6 +13,7 @@ sdkconfig.old
 
 # Ignore environment-specific files
 .vscode/
+.cache/
 
 # Ignore arduino libraries (~2GB in size)
 components/arduino
